@@ -18,9 +18,37 @@ class Pages extends BaseController
 
 	public function index()
 	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
 		$data['tinggi_pertalite'] = $this->mainModel->get_tinggi_pertalite();
 		$data['tinggi_pertamax'] = $this->mainModel->get_tinggi_pertamax();
 		return view('pages/index', $data);
+	}
+
+	// myProfile
+	public function profile()
+	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
+		// $data['tinggi_pertalite'] = $this->mainModel->get_tinggi_pertalite();
+		// $data['tinggi_pertamax'] = $this->mainModel->get_tinggi_pertamax();
+		return view('pages/profile');
+	}
+
+	// Management user
+	public function manage_user()
+	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
+		// $data['tinggi_pertalite'] = $this->mainModel->get_tinggi_pertalite();
+		// $data['tinggi_pertamax'] = $this->mainModel->get_tinggi_pertamax();
+		return view('pages/profile');
 	}
 
 	// Pertalite -------------------------------------------------
