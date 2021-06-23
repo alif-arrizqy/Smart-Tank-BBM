@@ -121,7 +121,7 @@
                         </a>
                         <div class="dropdown-menu animated flipInY">
                             <!-- text-->
-                            <a href="javascript:void(0)" class="dropdown-item">
+                            <a href="<?= base_url('Profile-user') ?>" class="dropdown-item">
                                 <i class="ti-user"></i> My Profile</a>
                             <div class="dropdown-divider"></div>
                             <!-- text-->
@@ -136,14 +136,14 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <li>
-                        <a class="waves-effect waves-dark" href="<?= base_url('/') ?>" aria-expanded="false">
+                        <a class="waves-effect waves-dark" href="<?= base_url('/User') ?>" aria-expanded="false">
                             <i class="icon-home"></i>
                             <span class="hide-menu">Home
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a class="waves-effect waves-dark" href="<?= base_url('/') ?>" aria-expanded="false">
+                        <a class="waves-effect waves-dark" href="<?= base_url('Profile-user') ?>" aria-expanded="false">
                             <i class="icon-user"></i>
                             <span class="hide-menu">My Profile
                             </span>

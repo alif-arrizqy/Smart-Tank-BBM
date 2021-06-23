@@ -20,7 +20,7 @@
             foreach ($tinggi_pertalite->getResult() as $rs) {
                 $t_pertalite = $rs->tinggi_ir;
             }
-            
+
             foreach ($tinggi_pertamax->getResult() as $rsl) {
                 $t_pertamax = $rsl->tinggi_ir;
             }
@@ -37,18 +37,42 @@
                                     <img class="card-img-center rounded-0" src="<?= base_url('public/assets/images/tank_pertalite.png') ?>">
                                 </div>
                                 <div class="content my-3">
-                                    <p class="mb-0 font-w-800 tx-s-12">Kapasitas Tanki : <?= $t_pertalite ?> L </p>
+                                    <p class="mb-0 font-w-800 tx-s-12">Kapasitas Tanki : <?= $t_pertalite ?> ml </p>
                                 </div>
-
-                                <div class="card bg-light my-6 text-left">
-                                    <div class="card-body">
-                                        <div class="content my-3">
-                                            <div class="card-liner-content text-center">
-                                                <h2 class="card-liner-title">STATUS : KOSONG </h2>
+                                <?php if ($t_pertalite >= 301 && $t_pertalite <= 1000) { ?>
+                                    <div class="card bg-success my-6 text-left">
+                                        <div class="card-body">
+                                            <div class="content my-3">
+                                                <div class="card-liner-content text-center">
+                                                    <h2 class="card-liner-title">STATUS : TERISI </h2>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
+                                <?php if ($t_pertalite >= 1 && $t_pertalite <= 300) { ?>
+                                    <div class="card bg-warning my-6 text-left">
+                                        <div class="card-body">
+                                            <div class="content my-3">
+                                                <div class="card-liner-content text-center">
+                                                    <h2 class="card-liner-title">STATUS : HAMPIR HABIS </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- </a> -->
+                                <?php } ?>
+                                <?php if ($t_pertalite == 0) { ?>
+                                    <div class="card bg-light my-6 text-left">
+                                        <div class="card-body">
+                                            <div class="content my-3">
+                                                <div class="card-liner-content text-center">
+                                                    <h2 class="card-liner-title">STATUS : KOSONG </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -66,18 +90,42 @@
                                     <img class="card-img-center rounded-0" src="<?= base_url('public/assets/images/tank_pertamax.png') ?>">
                                 </div>
                                 <div class="content my-3">
-                                    <p class="mb-0 font-w-800 tx-s-12">Kapasitas Tanki : 50 L </p>
+                                    <p class="mb-0 font-w-800 tx-s-12">Kapasitas Tanki : <?= $t_pertamax ?> ml </p>
                                 </div>
-
-                                <div class="card bg-success my-6 text-left">
-                                    <div class="card-body">
-                                        <div class="content my-3">
-                                            <div class="card-liner-content text-center">
-                                                <h2 class="card-liner-title">STATUS : TERISI </h2>
+                                <?php if ($t_pertamax >= 301 && $t_pertamax <= 1000) { ?>
+                                    <div class="card bg-success my-6 text-left">
+                                        <div class="card-body">
+                                            <div class="content my-3">
+                                                <div class="card-liner-content text-center">
+                                                    <h2 class="card-liner-title">STATUS : TERISI </h2>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
+                                <?php if ($t_pertamax >= 1 && $t_pertamax <= 300) { ?>
+                                    <div class="card bg-warning my-6 text-left">
+                                        <div class="card-body">
+                                            <div class="content my-3">
+                                                <div class="card-liner-content text-center">
+                                                    <h2 class="card-liner-title">STATUS : HAMPIR HABIS </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- </a> -->
+                                <?php } ?>
+                                <?php if ($t_pertamax == 0) { ?>
+                                    <div class="card bg-light my-6 text-left">
+                                        <div class="card-body">
+                                            <div class="content my-3">
+                                                <div class="card-liner-content text-center">
+                                                    <h2 class="card-liner-title">STATUS : KOSONG </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
