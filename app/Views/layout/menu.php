@@ -39,7 +39,7 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <li>
-                        <a class="waves-effect waves-dark" href="<?= base_url('/') ?>" aria-expanded="false">
+                        <a class="waves-effect waves-dark" href="<?= base_url('Home') ?>" aria-expanded="false">
                             <i class="icon-home"></i>
                             <span class="hide-menu">Home</span>
                         </a>
@@ -58,14 +58,14 @@
                         </a>
                         <ul aria-expanded="false" class="collapse">
                             <li>
-                                <a href="form-basic.html">Pengisian BBM</a>
+                                <a href="<?= base_url('Grafik-masuk') ?>">Pengisian BBM</a>
                             </li>
                             <li>
-                                <a href="form-layout.html">Pengeluaran BBM</a>
+                                <a href="<?= base_url('Grafik-keluar') ?>">Pengeluaran BBM</a>
                             </li>
                         </ul>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="ti-layout-accordion-merged"></i>
                             <span class="hide-menu">Laporan</span>
@@ -78,7 +78,7 @@
                                 <a href="table-layout.html">Pengeluaran BBM</a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
 
                 </ul>
             </nav>

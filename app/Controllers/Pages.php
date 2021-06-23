@@ -34,9 +34,8 @@ class Pages extends BaseController
 			session()->setFlashdata('gagal', 'Anda belum login !');
 			return redirect()->to(base_url('/Login'));
 		}
-		// $data['tinggi_pertalite'] = $this->mainModel->get_tinggi_pertalite();
-		// $data['tinggi_pertamax'] = $this->mainModel->get_tinggi_pertamax();
-		return view('pages/profile');
+		$data['profil'] = $this->mainModel->myprofile()->getRow();
+		return view('pages/profile', $data);
 	}
 
 	// Management user
@@ -46,41 +45,41 @@ class Pages extends BaseController
 			session()->setFlashdata('gagal', 'Anda belum login !');
 			return redirect()->to(base_url('/Login'));
 		}
-		// $data['tinggi_pertalite'] = $this->mainModel->get_tinggi_pertalite();
-		// $data['tinggi_pertamax'] = $this->mainModel->get_tinggi_pertamax();
-		return view('pages/profile');
+		$data['listUser'] = $this->mainModel->list_user();
+		return view('pages/manage-user', $data);
 	}
+
 
 	// Pertalite -------------------------------------------------
 	public function save_tinggi_pertalite($tinggi)
 	{
 		$date = time();
-		$kirimdata['tinggi_ir'] = $tinggi;
-		$kirimdata['tanggal'] = date("d/m/Y", $date);
-		$kirimdata['bulan'] = date("m", $date);
-		// $kirimdata['jam'] = date("h:i:sa");
+		$kirimdata['tinggi_ir'] 	= $tinggi;
+		$kirimdata['tanggal'] 		= date("Y-m-d", $date);
+		$kirimdata['waktu'] 		= date("H:i:s", $date);
+
 		$this->mainModel->add_tinggi_pertalite($kirimdata);
-		return redirect()->to('/');
+		return redirect()->to('/Home');
 	}
 	public function save_pertalite_masuk($masuk)
 	{
 		$date = time();
-		$kirimdata['data_masuk'] = $masuk;
-		$kirimdata['tanggal'] = date("d/m/Y", $date);
-		$kirimdata['bulan'] = date("m", $date);
-		// $kirimdata['jam'] = date("h:i:sa");
+		$kirimdata['data_masuk'] 	= $masuk;
+		$kirimdata['tanggal'] 		= date("Y-m-d", $date);
+		$kirimdata['waktu'] 		= date("H:i:s", $date);
+
 		$this->mainModel->add_pertalite_masuk($kirimdata);
-		return redirect()->to('/');
+		return redirect()->to('/Home');
 	}
 	public function save_pertalite_keluar($keluar)
 	{
 		$date = time();
 		$kirimdata['data_keluar'] = $keluar;
-		$kirimdata['tanggal'] = date("d/m/Y", $date);
-		$kirimdata['bulan'] = date("m", $date);
-		// $kirimdata['jam'] = date("h:i:sa");
+		$kirimdata['tanggal'] = date("Y-m-d", $date);
+		$kirimdata['waktu'] = date("H:i:s", $date);
+
 		$this->mainModel->add_pertalite_keluar($kirimdata);
-		return redirect()->to('/');
+		return redirect()->to('/Home');
 	}
 
 
@@ -88,87 +87,46 @@ class Pages extends BaseController
 	public function save_tinggi_pertamax($tinggi)
 	{
 		$date = time();
-		$kirimdata['tinggi_ir'] = $tinggi;
-		$kirimdata['tanggal'] = date("d/m/Y", $date);
-		$kirimdata['bulan'] = date("m", $date);
-		// $kirimdata['jam'] = date("h:i:sa");
+		$kirimdata['tinggi_ir'] 	= $tinggi;
+		$kirimdata['tanggal'] 		= date("Y-m-d", $date);
+		$kirimdata['waktu'] 		= date("H:i:s", $date);
+
 		$this->mainModel->add_tinggi_pertamax($kirimdata);
-		return redirect()->to('/');
+		return redirect()->to('/Home');
 	}
 	public function save_pertamax_masuk($masuk)
 	{
 		$date = time();
-		$kirimdata['data_masuk'] = $masuk;
-		$kirimdata['tanggal'] = date("d/m/Y", $date);
-		$kirimdata['bulan'] = date("m", $date);
-		// $kirimdata['jam'] = date("h:i:sa");
+		$kirimdata['data_masuk'] 	= $masuk;
+		$kirimdata['tanggal'] 		= date("Y-m-d", $date);
+		$kirimdata['waktu'] 		= date("H:i:s", $date);
+
 		$this->mainModel->add_pertamax_masuk($kirimdata);
-		return redirect()->to('/');
+		return redirect()->to('/Home');
 	}
 	public function save_pertamax_keluar($keluar)
 	{
 		$date = time();
 		$kirimdata['data_keluar'] = $keluar;
-		$kirimdata['tanggal'] = date("d/m/Y", $date);
-		$kirimdata['bulan'] = date("m", $date);
-		// $kirimdata['jam'] = date("h:i:sa");
+		$kirimdata['tanggal'] = date("Y-m-d", $date);
+		$kirimdata['waktu'] = date("H:i:s", $date);
+
 		$this->mainModel->add_pertamax_keluar($kirimdata);
-		return redirect()->to('/');
+		return redirect()->to('/Home');
 	}
 
-	// public function save_token()
-	// {
-	// 	// $jumlah = $this->request->getPost('inputJumlah');
-	// 	$date = time();
-	// 	$tarif = 1467.28;
-	// 	$jumlah = $this->request->getPost('inputJumlah');
-	// 	round($kwh = $jumlah / $tarif);
 
-	// 	$kirimdata = [
-	// 		'jumlah' => $jumlah,
-	// 		'kwh' => $kwh,
-	// 		'tanggal' => date("d", $date),
-	// 		'bulan' => date("m", $date),
-	// 		'waktu' => date("H:i:s", $date)
-	// 	];
-	// 	$success = $this->mainModel->addToken($kirimdata);
-	// 	if ($success) {
-	// 		session()->setFlashData('sukses', 'Data berhasil disimpan');
-	// 		return redirect()->to('/pages/token');
-	// 	} else {
-	// 		session()->setFlashData('gagal', 'Data gagal disimpan');
-	// 		return redirect()->to('/pages/token');
-	// 	}
-	// }
-
-	// public function edit_token($id)
-	// {
-	// 	$date = time();
-	// 	$tarif = 1467.28;
-	// 	$jumlah = $this->request->getPost('inputJumlah');
-	// 	round($kwh = $jumlah / $tarif);
-
-	// 	$kirimdata = [
-	// 		'id' => $id,
-	// 		'jumlah' => $jumlah,
-	// 		'kwh' => $kwh,
-	// 		'tanggal' => date("d", $date),
-	// 		'bulan' => date("m", $date),
-	// 		'waktu' => date("H:i:s", $date)
-	// 	];
-	// 	$this->mainModel->editToken($kirimdata);
-	// 	session()->setFlashData('sukses', 'Data berhasil disimpan');
-	// 	return redirect()->to('/pages/token');
-	// }
-
-	// public function delete_token($id)
-	// {
-	// 	$kirimdata = [
-	// 		'id' => $id
-	// 	];
-	// 	$this->mainModel->deleteToken($kirimdata);
-	// 	session()->setFlashData('hapus', 'Data berhasil dihapus');
-	// 	return redirect()->to('/pages/token');
-	// }
-
+	// grafik ------------------------------------------------
+	public function grafik_masuk()
+	{
+		$data['rekap_pertalite'] = $this->mainModel->get_all_pertalite_masuk();
+		$data['rekap_pertamax'] = $this->mainModel->get_all_pertamax_masuk();
+		return view('pages/grafik_masuk', $data);
+	}
+	public function grafik_keluar()
+	{
+		$data['rekap_pertalite'] = $this->mainModel->get_all_pertalite_keluar();
+		$data['rekap_pertamax'] = $this->mainModel->get_all_pertamax_keluar();
+		return view('pages/grafik_keluar', $data);
+	}
 }

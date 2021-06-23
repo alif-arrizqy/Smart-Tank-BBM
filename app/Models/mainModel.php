@@ -7,6 +7,19 @@ use CodeIgniter\Model;
 class mainModel extends Model
 {
 
+    // profile -----------------------------------------------------------
+    public function myprofile()
+    {
+        return $this->db->table('users')
+        ->where('id', session()->get('id'))->get();
+    }
+
+    public function list_user()
+    {
+        return $this->db->table('users')->orderBy("id", "ASC")->get()->getResultArray();
+    }
+
+
     // Pertalite ------------------------------------------------------------
     public function add_tinggi_pertalite($kirimdata)
     {
@@ -54,58 +67,23 @@ class mainModel extends Model
         return $query;
     }
 
-    public function addToken($kirimdata)
+    // Grafik masuk -------------------------------------------------------
+    public function get_all_pertalite_masuk()
     {
-        $query = $this->db->table('token')->insert($kirimdata);
-        return $query;
+        return $this->db->query("SELECT * FROM pertalite_masuk ORDER BY waktu DESC LIMIT 10")->getResultArray();
+    }
+    public function get_all_pertamax_masuk()
+    {
+        return $this->db->query("SELECT * FROM pertamax_masuk ORDER BY waktu DESC LIMIT 10")->getResultArray();
     }
 
-    public function getDataListrik()
+    // Grafik keluar -------------------------------------------------------
+    public function get_all_pertalite_keluar()
     {
-        return $this->db->table('listrik')->get()->getResultArray();
+        return $this->db->query("SELECT * FROM pertalite_keluar ORDER BY waktu DESC LIMIT 10")->getResultArray();
     }
-
-    public function getDataToken()
+    public function get_all_pertamax_keluar()
     {
-        // tampilkan data dari tabel token_temp, 1 data yg terbaru (berdasarkan id)
-        $query = $this->db->query("SELECT * FROM token ORDER BY id DESC LIMIT 1");
-        return $query;
-    }
-
-    public function getDataKwh()
-    {
-        return $this->db->table('rekap_kwh')->get()->getResultArray();
-    }
-
-    public function getDataJumlahBiaya()
-    {
-        return $this->db->table('rekap_jumlah_biaya')->get()->getResultArray();
-    }
-    
-    public function getAllDataToken()
-    {
-        return $this->db->table('token')->orderBy("id", "DESC")->get()->getResultArray();
-    }
-
-    public function editToken($kirimdata)
-    {
-        $this->db->table('token')->where('id', $kirimdata['id'])->update($kirimdata);
-    }
-
-    public function deleteToken($kirimdata)
-    {
-        $this->db->table('token')->where('id', $kirimdata['id'])->delete($kirimdata);
-    }
-
-    public function kwh_bulan($bulan)
-    {
-        $query = $this->db->query("SELECT SUM(data_daya) AS total_kwh_bulan FROM listrik WHERE bulan = '$bulan'");
-        return $query;
-    }
-
-    public function biaya_bulan($bulan)
-    {
-        $query = $this->db->query("SELECT SUM(jumlah) AS total_jumlah FROM token WHERE bulan = '$bulan'");
-        return $query;
+        return $this->db->query("SELECT * FROM pertamax_keluar ORDER BY waktu DESC LIMIT 10")->getResultArray();
     }
 }

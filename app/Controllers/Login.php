@@ -28,6 +28,7 @@ class Login extends BaseController
 		$cek = $this->loginModel->cek_login($username, $password);
 
 		if (($cek['username'] == $username) && ($cek['password'] == $password)) {
+			session()->set('id', $cek['id']);
 			session()->set('username', $cek['username']);
 			session()->set('fullname', $cek['fullname']);
 			session()->set('user_image', $cek['user_image']);

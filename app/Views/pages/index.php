@@ -66,7 +66,7 @@
                                     <img class="card-img-center rounded-0" src="<?= base_url('public/assets/images/tank_pertamax.png') ?>">
                                 </div>
                                 <div class="content my-3">
-                                    <p class="mb-0 font-w-800 tx-s-12">Kapasitas Tanki : 50 L </p>
+                                    <p class="mb-0 font-w-800 tx-s-12">Kapasitas Tanki : <?= $t_pertamax ?> L </p>
                                 </div>
 
                                 <div class="card bg-success my-6 text-left">

@@ -35,12 +35,17 @@ $routes->get('/Login', 'Login::index');
 
 // Admin
 $routes->get('/Home', 'Pages::index');
-$routes->get('/Profile', 'Pages::profile');
+$routes->get('/Profile/', 'Pages::profile');
 $routes->get('/Manage-user', 'Pages::manage_user');
 
 // User
 $routes->get('/User', 'User::index');
 $routes->get('/Profile-user', 'User::profile');
+
+// Grafik
+$routes->get('/Grafik-masuk', 'Pages::grafik_masuk');
+$routes->get('/Grafik-keluar', 'Pages::grafik_keluar');
+
 
 // Get data sensor dari nodemcu
 // Pertalite ---------------------------------------
