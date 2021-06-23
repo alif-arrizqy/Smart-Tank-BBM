@@ -46,6 +46,14 @@ $routes->get('/Profile-user', 'User::profile');
 $routes->get('/Grafik-masuk', 'Pages::grafik_masuk');
 $routes->get('/Grafik-keluar', 'Pages::grafik_keluar');
 
+// Laporan pengisian
+$routes->get('/Pengisian-pertalite', 'Pages::pengisian_pertalite');
+$routes->get('/Pengisian-pertamax', 'Pages::pengisian_pertamax');
+
+// Laporan pengeluaran
+$routes->get('/Pengeluaran-pertalite', 'Pages::pengeluaran_pertalite');
+$routes->get('/Pengeluaran-pertamax', 'Pages::pengeluaran_pertamax');
+
 
 // Get data sensor dari nodemcu
 // Pertalite ---------------------------------------

@@ -86,4 +86,24 @@ class mainModel extends Model
     {
         return $this->db->query("SELECT * FROM pertamax_keluar ORDER BY waktu DESC LIMIT 10")->getResultArray();
     }
+
+    // Laporan masuk -------------------------------------------------------
+    public function get_all_lap_masuk_pertalite()
+    {
+        return $this->db->table('pertalite_masuk')->orderBy("id", "ASC")->get()->getResultArray();
+    }
+    public function get_all_lap_masuk_pertamax()
+    {
+        return $this->db->table('pertamax_masuk')->orderBy("id", "ASC")->get()->getResultArray();
+    }
+
+    // Laporan keluar
+    public function get_all_lap_keluar_pertalite()
+    {
+        return $this->db->table('pertalite_keluar')->orderBy("id", "ASC")->get()->getResultArray();
+    }
+    public function get_all_lap_keluar_pertamax()
+    {
+        return $this->db->table('pertamax_keluar')->orderBy("id", "ASC")->get()->getResultArray();
+    }
 }

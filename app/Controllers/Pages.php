@@ -129,4 +129,46 @@ class Pages extends BaseController
 		$data['rekap_pertamax'] = $this->mainModel->get_all_pertamax_keluar();
 		return view('pages/grafik_keluar', $data);
 	}
+
+	// Laporan pengisian --------------------------------------------------
+	public function pengisian_pertalite()
+	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
+		$data['lap_masuk_pertalite'] = $this->mainModel->get_all_lap_masuk_pertalite();
+		
+		return view('pages/pengisian-pertalite', $data);
+	}
+	public function pengisian_pertamax()
+	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
+		$data['lap_masuk_pertamax'] = $this->mainModel->get_all_lap_masuk_pertamax();
+		return view('pages/pengisian-pertamax', $data);
+	}
+
+	// Laporan pengeluaran --------------------------------------------------
+	public function pengeluaran_pertalite()
+	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
+		$data['lap_keluar_pertalite'] = $this->mainModel->get_all_lap_keluar_pertalite();
+		
+		return view('pages/pengeluaran-pertalite', $data);
+	}
+	public function pengeluaran_pertamax()
+	{
+		if (session()->get('username') == '') {
+			session()->setFlashdata('gagal', 'Anda belum login !');
+			return redirect()->to(base_url('/Login'));
+		}
+		$data['lap_keluar_pertamax'] = $this->mainModel->get_all_lap_keluar_pertamax();
+		return view('pages/pengeluaran-pertamax', $data);
+	}
 }

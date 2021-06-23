@@ -68,14 +68,28 @@
                     <li>
                         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="ti-layout-accordion-merged"></i>
-                            <span class="hide-menu">Laporan</span>
+                            <span class="hide-menu">Laporan Pengisian</span>
                         </a>
                         <ul aria-expanded="false" class="collapse">
                             <li>
-                                <a href="table-basic.html">Pengisian BBM</a>
+                                <a href="<?= base_url('Pengisian-pertalite') ?>">Pengisian Pertalite</a>
                             </li>
                             <li>
-                                <a href="table-layout.html">Pengeluaran BBM</a>
+                                <a href="<?= ('Pengisian-pertamax') ?>">Pengisian Pertamax</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="ti-layout-accordion-merged"></i>
+                            <span class="hide-menu">Laporan Pengeluaran</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li>
+                                <a href="<?= base_url('Pengeluaran-pertalite') ?>">Pengeluaran Pertalite</a>
+                            </li>
+                            <li>
+                                <a href="<?= ('Pengeluaran-pertamax') ?>">Pengeluaran Pertamax</a>
                             </li>
                         </ul>
                     </li>
