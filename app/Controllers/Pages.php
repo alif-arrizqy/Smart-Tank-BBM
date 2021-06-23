@@ -14,6 +14,7 @@ class Pages extends BaseController
 	{
 		$this->mainModel = new mainModel();
 		helper('form');
+		$this->email = \Config\Services::email();
 	}
 
 	public function index()
@@ -138,7 +139,7 @@ class Pages extends BaseController
 			return redirect()->to(base_url('/Login'));
 		}
 		$data['lap_masuk_pertalite'] = $this->mainModel->get_all_lap_masuk_pertalite();
-		
+
 		return view('pages/pengisian-pertalite', $data);
 	}
 	public function pengisian_pertamax()
@@ -159,7 +160,7 @@ class Pages extends BaseController
 			return redirect()->to(base_url('/Login'));
 		}
 		$data['lap_keluar_pertalite'] = $this->mainModel->get_all_lap_keluar_pertalite();
-		
+
 		return view('pages/pengeluaran-pertalite', $data);
 	}
 	public function pengeluaran_pertamax()
@@ -170,5 +171,73 @@ class Pages extends BaseController
 		}
 		$data['lap_keluar_pertamax'] = $this->mainModel->get_all_lap_keluar_pertamax();
 		return view('pages/pengeluaran-pertamax', $data);
+	}
+
+	// email ----------------------------------------------------------
+	public function sendEmailPertalite()
+	{
+		$date = time();
+		$this->email->setFrom('ayatulloh.alif20@gmail.com', 'Alif AA');
+		$this->email->setTo('atikmw24@gmail.com');
+
+		$this->email->setSubject('Permintaan Pengisian Bahan Bakar Pertalite');
+		$this->email->setMessage('
+		<p>Bogor,' . date("Y-m-d", $date) . '</p>
+		<p></p>
+		<p>Kepada Yth.</p>
+		<p></p>
+		<p>Dengan Hormat,</p>
+		<ke>Bersama dengan email ini kami mohon kepada Pertamina Pusat untuk dapat mengirimkan BBM jenis Pertalite sebesar 1000ml 
+			ke SPBU 01-123-45 yang bertempat di:</p>
+		<p>Lokasi : Jl. Mawar No. 20 Bogor</p>
+		<p>Tanggal: ' . date("Y-m-d", $date) . '</p>
+		<p>Untuk itu, kami mohon untuk dikirimkan BBM jenis pertalite ke lokasi dan tanggal yang sudah tertera.</p>
+		<p>Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.</p>
+		<p></p>
+		<p></p>
+		<p>Hormat kami,</p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p>Atik Medixa Winesti</p>');
+		if (!$this->email->send()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	public function sendEmailPertamax()
+	{
+		$date = time();
+		$this->email->setFrom('ayatulloh.alif20@gmail.com', 'Alif AA');
+		$this->email->setTo('atikmw24@gmail.com');
+
+		$this->email->setSubject('Permintaan Pengisian Bahan Bakar Pertamax');
+		$this->email->setMessage('
+		<p>Bogor,' . date("Y-m-d", $date) . '</p>
+		<p></p>
+		<p>Kepada Yth.</p>
+		<p></p>
+		<p>Dengan Hormat,</p>
+		<ke>Bersama dengan email ini kami mohon kepada Pertamina Pusat untuk dapat mengirimkan BBM jenis Pertalite sebesar 1000ml 
+			ke SPBU 01-123-45 yang bertempat di:</p>
+		<p>Lokasi : Jl. Mawar No. 20 Bogor</p>
+		<p>Tanggal: ' . date("Y-m-d", $date) . '</p>
+		<p>Untuk itu, kami mohon untuk dikirimkan BBM jenis pertalite ke lokasi dan tanggal yang sudah tertera.</p>
+		<p>Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.</p>
+		<p></p>
+		<p></p>
+		<p>Hormat kami,</p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p>Atik Medixa Winesti</p>');
+		if (!$this->email->send()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

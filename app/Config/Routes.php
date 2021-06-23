@@ -54,6 +54,10 @@ $routes->get('/Pengisian-pertamax', 'Pages::pengisian_pertamax');
 $routes->get('/Pengeluaran-pertalite', 'Pages::pengeluaran_pertalite');
 $routes->get('/Pengeluaran-pertamax', 'Pages::pengeluaran_pertamax');
 
+// Email
+$routes->get('/sendEmailPertalite', 'Pages::sendEmailPertalite');
+$routes->get('/sendEmailPertamax', 'Pages::sendEmailPertamax');
+
 
 // Get data sensor dari nodemcu
 // Pertalite ---------------------------------------
